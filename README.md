@@ -73,11 +73,11 @@ Develop an HTTP service with Java Spring Boot that includes endpoints for:
 
 Develop a reservation platform for a premium hotel establishment.
 
+![Architecture Diagram](/images/architecture-v1.jpeg)
+
 ## Proposed Solution
 
-Create a web application that enables hotel guests to book rooms. The application will offer:
-
-![Architecture Diagram](/images/architecture-v1.jpeg)
+Create a web application that enables hotel guests to book rooms.
 
 ### Room Search Feature
 
