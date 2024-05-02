@@ -1,0 +1,225 @@
+openapi: 3.0.1
+info:
+  title: Reservations API
+  version: v1
+servers:
+  - url: "{server}:{port}/reservations"
+    description: Base server URL for Reservations API
+    variables:
+      server:
+        default: http://localhost
+        description: Base server URL
+      port:
+        default: "8080"
+        description: The port on which the server is running
+        enum:
+          - "8080"
+tags:
+  - name: Reservations
+    description: Operations related to reservations
+paths:
+  /{reservation_id}:
+    put:
+      tags:
+        - Reservations
+      operationId: updateReservation
+      parameters:
+        - name: reservation_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateReservationRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Reservation'
+    delete:
+      tags:
+        - Reservations
+      operationId: deleteReservation
+      parameters:
+        - name: reservation_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: OK
+  /:
+    post:
+      tags:
+        - Reservations
+      operationId: createReservation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReservationRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Reservation'
+  /users/{userId}:
+    get:
+      tags:
+        - Reservations
+      operationId: getUserReservations
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Reservation'
+  /roomTypes:
+    get:
+      tags:
+        - Reservations
+      operationId: getRoomTypes
+      parameters:
+        - name: checkinDate
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
+            default: 2024-02-15T15:00:38.122Z
+        - name: checkoutDate
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
+            default: 2024-02-16T15:00:38.122Z
+        - name: guestCapacity
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+            default: 1
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RoomType'
+components:
+  schemas:
+    UpdateReservationRequest:
+      type: object
+      properties:
+        checkinDate:
+          type: string
+          format: date-time
+        checkoutDate:
+          type: string
+          format: date-time
+    Reservation:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        room:
+          $ref: '#/components/schemas/Room'
+        checkinDate:
+          type: string
+          format: date-time
+        checkoutDate:
+          type: string
+          format: date-time
+        user:
+          $ref: '#/components/schemas/User'
+    Room:
+      type: object
+      properties:
+        number:
+          type: integer
+          format: int32
+        type:
+          $ref: '#/components/schemas/RoomType'
+    RoomType:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+        guestCapacity:
+          type: integer
+          format: int32
+        price:
+          type: number
+          format: double
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        mobileNumber:
+          type: string
+    ReservationRequest:
+      type: object
+      required:
+        - checkinDate
+        - checkoutDate
+        - roomType
+        - user
+      properties:
+        checkinDate:
+          type: string
+          format: date-time
+        checkoutDate:
+          type: string
+          format: date-time
+        roomType:
+          type: string
+        user:
+          $ref: '#/components/schemas/UserDto'
+        rate:
+          type: number
+          format: double
+    UserDto:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        mobileNumber:
+          type: string
