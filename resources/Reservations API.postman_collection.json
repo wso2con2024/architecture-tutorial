@@ -1,0 +1,431 @@
+{
+	"info": {
+		"_postman_id": "e03ab3a8-3275-4c63-b09b-0f3db17dd858",
+		"name": "Reservations API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13131457"
+	},
+	"item": [
+		{
+			"name": "{reservation_id}",
+			"item": [
+				{
+					"name": "update Reservation",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"checkinDate\": \"<dateTime>\",\n  \"checkoutDate\": \"<dateTime>\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/:reservation_id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								":reservation_id"
+							],
+							"variable": [
+								{
+									"key": "reservation_id",
+									"value": "<long>",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"checkinDate\": \"<dateTime>\",\n  \"checkoutDate\": \"<dateTime>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/:reservation_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":reservation_id"
+									],
+									"variable": [
+										{
+											"key": "reservation_id"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": \"<integer>\",\n  \"room\": {\n    \"number\": \"<integer>\",\n    \"type\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"guestCapacity\": \"<integer>\",\n      \"price\": \"<double>\"\n    }\n  },\n  \"checkinDate\": \"<dateTime>\",\n  \"checkoutDate\": \"<dateTime>\",\n  \"user\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"mobileNumber\": \"<string>\"\n  }\n}"
+						}
+					]
+				},
+				{
+					"name": "delete Reservation",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/:reservation_id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								":reservation_id"
+							],
+							"variable": [
+								{
+									"key": "reservation_id",
+									"value": "<long>",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/:reservation_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":reservation_id"
+									],
+									"variable": [
+										{
+											"key": "reservation_id"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "/",
+			"item": [
+				{
+					"name": "create Reservation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"checkinDate\": \"<dateTime>\",\n  \"checkoutDate\": \"<dateTime>\",\n  \"roomType\": \"<string>\",\n  \"user\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"mobileNumber\": \"<string>\"\n  },\n  \"rate\": \"<double>\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"checkinDate\": \"<dateTime>\",\n  \"checkoutDate\": \"<dateTime>\",\n  \"roomType\": \"<string>\",\n  \"user\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"mobileNumber\": \"<string>\"\n  },\n  \"rate\": \"<double>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": \"<integer>\",\n  \"room\": {\n    \"number\": \"<integer>\",\n    \"type\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"guestCapacity\": \"<integer>\",\n      \"price\": \"<double>\"\n    }\n  },\n  \"checkinDate\": \"<dateTime>\",\n  \"checkoutDate\": \"<dateTime>\",\n  \"user\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"mobileNumber\": \"<string>\"\n  }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "{userId}",
+					"item": [
+						{
+							"name": "get User Reservations",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/users/:userId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "df33ab68-4a86-44b6-aac8-25cf6bed50c1",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/users/:userId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"users",
+												":userId"
+											],
+											"variable": [
+												{
+													"key": "userId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"id\": \"<integer>\",\n    \"room\": {\n      \"number\": \"<integer>\",\n      \"type\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"guestCapacity\": \"<integer>\",\n        \"price\": \"<double>\"\n      }\n    },\n    \"checkinDate\": \"<dateTime>\",\n    \"checkoutDate\": \"<dateTime>\",\n    \"user\": {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"mobileNumber\": \"<string>\"\n    }\n  },\n  {\n    \"id\": \"<integer>\",\n    \"room\": {\n      \"number\": \"<integer>\",\n      \"type\": {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"guestCapacity\": \"<integer>\",\n        \"price\": \"<double>\"\n      }\n    },\n    \"checkinDate\": \"<dateTime>\",\n    \"checkoutDate\": \"<dateTime>\",\n    \"user\": {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"mobileNumber\": \"<string>\"\n    }\n  }\n]"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "roomTypes",
+			"item": [
+				{
+					"name": "get Room Types",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/roomTypes?checkinDate=2024-02-15T15:00:38.122Z&checkoutDate=2024-02-16T15:00:38.122Z&guestCapacity=1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"roomTypes"
+							],
+							"query": [
+								{
+									"key": "checkinDate",
+									"value": "2024-02-15T15:00:38.122Z"
+								},
+								{
+									"key": "checkoutDate",
+									"value": "2024-02-16T15:00:38.122Z"
+								},
+								{
+									"key": "guestCapacity",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/roomTypes?checkinDate=2024-02-15T15:00:38.122Z&checkoutDate=2024-02-16T15:00:38.122Z&guestCapacity=1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"roomTypes"
+									],
+									"query": [
+										{
+											"key": "checkinDate",
+											"value": "2024-02-15T15:00:38.122Z"
+										},
+										{
+											"key": "checkoutDate",
+											"value": "2024-02-16T15:00:38.122Z"
+										},
+										{
+											"key": "guestCapacity",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"guestCapacity\": \"<integer>\",\n    \"price\": \"<double>\"\n  },\n  {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"guestCapacity\": \"<integer>\",\n    \"price\": \"<double>\"\n  }\n]"
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "server",
+			"value": "http://localhost"
+		},
+		{
+			"key": "port",
+			"value": "8080"
+		},
+		{
+			"key": "baseUrl",
+			"value": "{{server}}:{{port}}/reservations"
+		}
+	]
+}
