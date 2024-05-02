@@ -15,7 +15,7 @@ spec:
   # +optional Incoming connection details for the component (AKA Endpoints).
   inbound:
     # +required Unique name for the endpoint. (This name will be used when generating the managed API)
-    - name: Backend for frontend (Java/Spring Boot Implementation)
+    - name: Reservation Core Services (Java/Spring Boot Implementation)
       # +required Numeric port value that gets exposed via this endpoint
       port: 8080
       # +required Type of the traffic this endpoint is accepting. Example: REST, GraphQL, etc.
