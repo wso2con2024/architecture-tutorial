@@ -11,6 +11,7 @@ sasl_username = os.getenv('KAFKA_USERNAME')
 sasl_password = os.getenv('KAFKA_PASSWORD')
 session_timeout_ms = os.getenv('SESSION_TIMEOUT_MS')
 topic_name = os.getenv('TOPIC_NAME')
+preferred_broker = os.getenv('PREFERRED_BROKER')
 
 # Configuration values from environment or configuration file
 connection_string = os.environ.get('AZURE_COMM_SERVICES_CONNECTION_STRING')
@@ -19,17 +20,27 @@ sender_address = os.environ.get('AZURE_COMM_SERVICES_SENDER_ADDRESS')
 email_client = EmailClient.from_connection_string(connection_string)
 
 # Configuration for the Confluent Kafka Consumer
-conf = {
-    'bootstrap.servers': bootstrap_servers,
-    'security.protocol': security_protocol,
-    'sasl.mechanisms': sasl_mechanisms,
-    'sasl.username': sasl_username,
-    'sasl.password': sasl_password,
-    'session.timeout.ms': session_timeout_ms,
-    'group.id': 'your_group_id',  # Specify your consumer group
-    'auto.offset.reset': 'earliest',  # Start reading at the earliest message
-    'enable.auto.commit': True,  # Automatically commit offsets
-}
+
+if preferred_broker == 'local-broker':
+    conf = {
+            'bootstrap.servers': bootstrap_servers,
+            'security.protocol': 'PLAINTEXT',
+            'group.id': '1',
+            'auto.offset.reset': 'earliest',
+            'enable.auto.commit': True,
+    }
+else:
+    conf = {
+            'bootstrap.servers': bootstrap_servers,
+            'security.protocol': security_protocol,
+            'sasl.mechanisms': sasl_mechanisms,
+            'sasl.username': sasl_username,
+            'sasl.password': sasl_password,
+            'session.timeout.ms': session_timeout_ms,
+            'group.id': 'your_group_id',  # Specify your consumer group
+            'auto.offset.reset': 'earliest',  # Start reading at the earliest message
+            'enable.auto.commit': True,  # Automatically commit offsets
+    }
 
 
 def send_email(receipient, subject, body):
